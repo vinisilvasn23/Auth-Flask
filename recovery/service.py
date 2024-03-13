@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from flask import current_app, render_template_string
 from flask_jwt_extended import JWTManager, create_access_token, decode_token
 from users.database import get_session
@@ -11,12 +11,12 @@ jwt = JWTManager()
 
 
 def find_user_by_email(email):
-    session = get_session() 
+    session = get_session()
     user = session.query(User).filter_by(email=email).first()
     return user
 
 def generate_password_reset_token(user_id):
-    expires = datetime.utcnow() + timedelta(hours=1)
+    expires = datetime.now(timezone.utc) + timedelta(hours=1)
     token_payload = {"user_id": user_id, "exp": expires}
     token = create_access_token(identity=token_payload)
     return token
@@ -25,8 +25,8 @@ def generate_password_reset_token(user_id):
 def verify_password_reset_token(token):
     try:
         token_payload = decode_token(token)
-        expiration_time = datetime.utcfromtimestamp(token_payload.get("exp", 0))
-        if datetime.utcnow() <= expiration_time:
+        expiration_time = datetime.fromtimestamp(token_payload.get("exp", 0), timezone.utc)
+        if datetime.now(timezone.utc) <= expiration_time:
             return token_payload.get("sub", {}).get("user_id")
     except Exception as e:
         print(f"Error verifying password reset token: {e}")

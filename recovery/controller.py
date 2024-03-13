@@ -6,9 +6,7 @@ from .service import (
     find_user_by_email,
     send_password_reset_email
 )
-import pysnooper
 
-@pysnooper.snoop()
 class ForgotPasswordResource(Resource):
     def post(self):
         parser = reqparse.RequestParser()
@@ -24,7 +22,7 @@ class ForgotPasswordResource(Resource):
         else:
             return {"error": "User not found!"}, 404
 
-@pysnooper.snoop()
+
 class ResetPasswordResource(Resource):
     def post(self):
         parser = reqparse.RequestParser()
