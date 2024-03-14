@@ -18,7 +18,7 @@ Python 3.x
 Para instalar, siga estas etapas:
 
 ```
-<git clone https://github.com/vinisilvasn23/Auth-Flask.git>
+git clone https://github.com/vinisilvasn23/Auth-Flask.git
 ```
 
 Para usar iniciar, siga estas etapas:
@@ -30,7 +30,7 @@ Para usar iniciar, siga estas etapas:
 
 Instale as dependências usando o pip:
 ```
-<pip install -r requirements.txt>
+pip install -r requirements.txt
 ```
 Execute o aplicativo Flask:
 ```
