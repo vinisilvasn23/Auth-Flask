@@ -11,8 +11,12 @@
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 Python 3.x
 
-- Você instalou a versão mais recente de `<Python 3.x>`
+- Você possui a versão mais recente de `<Python 3.x>`
 
+- Se deseja testar sem instalar localmente, você pode acessar a seguinte URL:
+```
+https://vinisilvasn.pythonanywhere.com/users
+```
 ## 🚀 Instalando projeto
 
 Para instalar, siga estas etapas:
